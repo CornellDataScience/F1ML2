@@ -1,0 +1,46 @@
+Loading qualifying dataset...
+Dataset loaded: 15769 records
+Features: 163 columns
+Date range: 1983-2022
+Created 880 unique qualifying sessions
+
+======================================================================
+DATA SPLIT: Training on <2022, Testing on 2022
+======================================================================
+
+Training set: 15333 records (1983-2021)
+Test set: 436 records (season 2022)
+
+Preparing training features and target...
+  🔬 EXPERIMENT: Dropping 'qualifying_secs' column
+  Dropping 4 non-numeric columns: ['circuit_id', 'constructor', 'circuit_id_weather_dup', 'weather']
+  Converting 129 boolean columns to int
+Training feature matrix shape: (15333, 154)
+Training target shape: (15333,)
+Number of training sessions: 684
+
+Training XGBoost Ranker for qualifying prediction...
+======================================================================
+
+======================================================================
+Model saved to: xgbranker_quali_model.json
+
+======================================================================
+EVALUATING ON TEST SET (2022)
+======================================================================
+  🔬 EXPERIMENT: Dropping 'qualifying_secs' column
+  Dropping 4 non-numeric columns: ['circuit_id', 'constructor', 'circuit_id_weather_dup', 'weather']
+  Converting 129 boolean columns to int
+
+======================================================================
+TEST SET RESULTS (2022)
+======================================================================
+Total qualifying sessions: 22
+
+Pole Position Accuracy: 36.36% (8/22)
+Top 3 in Exact Order: 0.00% (0/22)
+Top 3 Any Order: 27.27% (6/22)
+======================================================================
+
+Training complete! Model ready for qualifying predictions.
+Use generatepredictions_quali.py to make predictions for upcoming races.
