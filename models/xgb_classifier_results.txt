@@ -1,0 +1,234 @@
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:83: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  if row[1][0] > 3:
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:84: FutureWarning: Series.__setitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To set a value by position, use `ser.iloc[pos] = value`
+  row[1][0] = 0
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:87: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  if row[1][0] > 3:
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:88: FutureWarning: Series.__setitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To set a value by position, use `ser.iloc[pos] = value`
+  row[1][0] = 0
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:121: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  accuracyDF[place + "_place_probs"] = probs[:, i]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:121: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  accuracyDF[place + "_place_probs"] = probs[:, i]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:121: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  accuracyDF[place + "_place_probs"] = probs[:, i]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:125: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  accuracyDF['placement_prediction'] = 0
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:144: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  remaining2 = remaining[~second_mask]
+/Users/sz/Programming/CDS/f1_ml/test/models/xgb_script_quali.py:153: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  accuracyDF = accuracyDF.groupby(['season', 'round']).apply(make_predictions).reset_index(drop=True)
+Step 1: Training model on historical qualifying data
+You can skip this if model already exists (comment out the train() call)
+======================================================================
+Training XGBoost Classifier for Qualifying Prediction
+======================================================================
+
+Loading training data from: ../data/HOLY_qualifying_v1.csv
+  🔬 EXPERIMENT: Dropping 'qualifying_secs' column
+  Dropping 4 non-numeric columns: ['circuit_id', 'constructor', 'circuit_id_weather_dup', 'weather']
+  Converting 129 boolean columns to int
+Dataset shape: (15769, 157)
+Date range: 1983-2022
+
+Splitting data: <=2018 for training, >=2019 for testing
+Training set: 14140 records
+Test set: 1629 records
+
+Converting qualifying positions to classes...
+  Class 1: Pole position
+  Class 2: 2nd place
+  Class 3: 3rd place
+  Class 0: Outside top 3
+
+Training XGBoost Classifier...
+Training complete!
+
+Generating predictions on test set...
+
+======================================================================
+MODEL PERFORMANCE ON TEST SET (2019-2023)
+======================================================================
+Pole Position Accuracy: 32.93% (27/82)
+Top 3 Position Accuracy: 27.64% (68/246)
+======================================================================
+
+Model saved to: xgb_quali_classifier.joblib
