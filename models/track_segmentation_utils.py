@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import requests
 import io
+import json
 from typing import List, Optional, Iterable
 import warnings
 import fastf1
@@ -55,6 +56,85 @@ def load_raceline_csv(raw_url: str) -> pd.DataFrame:
     if (df.iloc[0] != df.iloc[-1]).any():
         df = pd.concat([df, df.iloc[[0]]], ignore_index=True)
 
+    return df
+
+
+def load_raceline_geojson(raw_url: str) -> pd.DataFrame:
+    """
+    Load raceline GeoJSON and return float columns x_m, y_m.
+    Extracts coordinates from GeoJSON LineString geometry.
+    """
+    r = requests.get(raw_url, timeout=30)
+    r.raise_for_status()
+    
+    geojson_data = json.loads(r.text)
+    
+    # Extract coordinates from GeoJSON structure
+    # GeoJSON can be FeatureCollection or single Feature
+    if geojson_data.get('type') == 'FeatureCollection':
+        features = geojson_data.get('features', [])
+        if not features:
+            raise ValueError("No features found in GeoJSON")
+        # Take first feature (usually the track)
+        geometry = features[0].get('geometry', {})
+    elif geojson_data.get('type') == 'Feature':
+        geometry = geojson_data.get('geometry', {})
+    else:
+        # Might be just geometry
+        geometry = geojson_data
+    
+    # Extract coordinates from LineString or MultiLineString
+    coords = []
+    if geometry.get('type') == 'LineString':
+        coords = geometry.get('coordinates', [])
+    elif geometry.get('type') == 'MultiLineString':
+        # Flatten all line segments
+        for line in geometry.get('coordinates', []):
+            coords.extend(line)
+    else:
+        raise ValueError(f"Unsupported geometry type: {geometry.get('type')}")
+    
+    if not coords:
+        raise ValueError("No coordinates found in GeoJSON")
+    
+    # Convert to DataFrame
+    # GeoJSON coordinates are [lon, lat]
+    df = pd.DataFrame(coords, columns=['lon', 'lat'])
+    
+    # If coordinates look like lat/lon (small values), convert to meters using Web Mercator-like projection
+    # This is a heuristic: if values are between -180 and 180, assume lat/lon
+    if df['lon'].abs().max() < 200 and df['lat'].abs().max() < 200:
+        # Use a local tangent plane projection centered on the track
+        # This is more accurate than simple degree multiplication
+        center_lon = df['lon'].mean()
+        center_lat = df['lat'].mean()
+        
+        # Convert to radians
+        lon_rad = np.radians(df['lon'].values)
+        lat_rad = np.radians(df['lat'].values)
+        center_lon_rad = np.radians(center_lon)
+        center_lat_rad = np.radians(center_lat)
+        
+        # Earth radius in meters
+        R = 6371000
+        
+        # Project to local Cartesian coordinates (meters)
+        # x = R * cos(center_lat) * (lon - center_lon)
+        # y = R * (lat - center_lat)
+        df['x_m'] = R * np.cos(center_lat_rad) * (lon_rad - center_lon_rad)
+        df['y_m'] = R * (lat_rad - center_lat_rad)
+    else:
+        # Already in meters or other Cartesian system
+        df['x_m'] = df['lon']
+        df['y_m'] = df['lat']
+    
+    # Keep only x_m and y_m columns
+    df = df[['x_m', 'y_m']].copy()
+    df = df.dropna(subset=["x_m", "y_m"]).reset_index(drop=True)
+    
+    if (df.iloc[0] != df.iloc[-1]).any():
+        df = pd.concat([df, df.iloc[[0]]], ignore_index=True)
+    
     return df
 
 
@@ -220,7 +300,11 @@ def generate_track_segments(
     if raceline_url is None:
         raise ValueError(f"raceline_url is required for track '{track_name}'")
     
-    raceline = load_raceline_csv(raceline_url)
+    # Auto-detect format based on URL extension
+    if raceline_url.endswith('.geojson'):
+        raceline = load_raceline_geojson(raceline_url)
+    else:
+        raceline = load_raceline_csv(raceline_url)
     rl_eq = resample_equal_arclength(raceline, resample_step_m)
     
     kappa = curvature_from_xy(rl_eq.x_m.values, rl_eq.y_m.values, rl_eq.s_m.values)
