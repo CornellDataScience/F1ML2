@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.DS_Store?
+
+# Python
+__pycache__/
+env/
+venv/
+ENV/
+dist/
+build/
+
+*.ff1pkl
+*.md
+*.sqlite

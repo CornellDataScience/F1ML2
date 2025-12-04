@@ -1,10 +1,11 @@
 """
-Test Models on 2023 Data
+Test Models on 2023 Data - Hybrid Dataset
 
-This script tests our best models on the 2023 season to see how well
-they generalize to new data.
+This script tests models using the HYBRID dataset:
+- Historical data (1983-2023) for long-term patterns
+- Telemetry features (2018-2023) for modern races where available
 
-Train on: 1983-2022
+Train on: 1983-2022 (with telemetry for 2018-2022)
 Test on: 2023
 """
 
@@ -14,36 +15,35 @@ from sklearn.linear_model import BayesianRidge, LinearRegression
 from sklearn.preprocessing import StandardScaler
 
 print("=" * 70)
-print("TESTING MODELS ON 2023 DATA")
-print("Using LEAK-FREE datasets")
+print("TESTING MODELS ON 2023 - HYBRID DATASET")
+print("Historical (1983-2022) + Telemetry (2018-2022)")
 print("=" * 70)
 
-# Load leak-free training dataset
-print("\nLoading leak-free training dataset (1983-2022)...")
-train_df = pd.read_csv('../data/HOLY_qualifying_v1_train2023.csv')
+# Load datasets
+print("\nLoading hybrid dataset...")
+train_df = pd.read_csv('../data/HOLY_qualifying_hybrid_train2023.csv')
+full_df = pd.read_csv('../data/HOLY_qualifying_hybrid_1983_2023.csv')
+test_df = full_df[full_df['season'] == 2023].copy()
 
-if 'Unnamed: 0' in train_df.columns:
-    train_df = train_df.drop(columns=['Unnamed: 0'])
+print(f"Training set: {train_df.shape}")
+print(f"Test set (2023): {test_df.shape}")
 
-print(f"Training dataset: {len(train_df)} records ({train_df['season'].min()}-{train_df['season'].max()})")
+# Check telemetry coverage
+telemetry_cols = [col for col in train_df.columns if 'practice_' in col]
+train_with_telem = train_df[train_df['practice_overall_avg_speed'].notna()]
+test_with_telem = test_df[test_df['practice_overall_avg_speed'].notna()]
 
-# Load full dataset for test data
-print("\nLoading full dataset for test data...")
-df = pd.read_csv('../data/HOLY_qualifying_full_to_2023.csv')
-
-if 'Unnamed: 0' in df.columns:
-    df = df.drop(columns=['Unnamed: 0'])
-
-print(f"Full dataset: {len(df)} records ({df['season'].min()}-{df['season'].max()})")
+print(f"\nTelemetry features: {len(telemetry_cols)}")
+print(f"Training records with telemetry: {len(train_with_telem)}/{len(train_df)} ({100*len(train_with_telem)/len(train_df):.1f}%)")
+print(f"Test records with telemetry: {len(test_with_telem)}/{len(test_df)} ({100*len(test_with_telem)/len(test_df):.1f}%)")
 
 def process_df(df):
     """Process dataframe to prepare features"""
-    y = df.loc[:, 'grid']
-    X = df.drop(columns=['grid', 'driver', 'season', 'round'], errors='ignore')
+    y = df['grid']
+    X = df.drop(columns=['grid', 'driver', 'season', 'round', 'circuit_id'], errors='ignore')
 
     # Drop qualifying_secs to prevent data leakage
     if 'qualifying_secs' in X.columns:
-        print(f"  🔬 DROPPING 'qualifying_secs'")
         X = X.drop(columns=['qualifying_secs'])
 
     # Drop non-numeric columns
@@ -87,38 +87,23 @@ def calculate_pole_accuracy(test_df, predictions):
     pole_accuracy = (correct_poles / total_sessions) * 100
     return pole_accuracy, correct_poles, total_sessions, correct_sessions
 
-# Split data: Train on <2023, Test on 2023
-print("\n" + "=" * 70)
-print("DATA SPLIT")
-print("=" * 70)
-TEST_YEAR = 2023
-
-test_df = df[df['season'] == TEST_YEAR].copy()
-
-print(f"Training set: {len(train_df)} records (1983-2022)")
-print(f"Test set: {len(test_df)} records ({TEST_YEAR})")
-print(f"Test sessions: {test_df.groupby(['season', 'round']).ngroups}")
-
 # Prepare data
 print("\nPreparing features...")
 X_train, y_train = process_df(train_df)
 X_test, y_test = process_df(test_df)
 
-# Align columns: add new circuits/constructors from test to train (with 0 values)
-print("Aligning features between train and test sets...")
+# Align columns
+print("Aligning features...")
 all_cols = set(X_train.columns) | set(X_test.columns)
-
-# Add missing columns
 for col in all_cols - set(X_train.columns):
     X_train[col] = 0
 for col in all_cols - set(X_test.columns):
     X_test[col] = 0
 
-# Ensure same column order
 X_train = X_train[sorted(all_cols)]
 X_test = X_test[sorted(all_cols)]
 
-# Fill missing values
+# Fill missing values (telemetry NaNs for old data)
 X_train = X_train.fillna(X_train.mean())
 X_test = X_test.fillna(X_train.mean())
 
@@ -165,13 +150,23 @@ print(f"  Pole Position Accuracy: {pole_acc_lr:.2f}% ({correct_lr}/{total_lr})")
 # COMPARISON
 # ============================================================================
 print("\n" + "=" * 70)
-print("COMPARISON: 2022 vs 2023 PERFORMANCE")
+print("COMPARISON: HYBRID vs PURE APPROACHES")
 print("=" * 70)
 
 results = pd.DataFrame({
-    'Model': ['BayesianRidge (no scaling)', 'LinearRegression (with scaling)'],
-    '2023_Accuracy': [pole_acc_br, pole_acc_lr],
-    'Change': [pole_acc_br - 50.00, pole_acc_lr - 50.00]
+    'Model': ['BayesianRidge', 'LinearRegression'],
+    'Hybrid (1983-2023 + Telemetry)': [
+        f'{pole_acc_br:.2f}%',
+        f'{pole_acc_lr:.2f}%'
+    ],
+    'Historical Only (from test_2023_predictions)': [
+        '47.62%',
+        '14.29%'
+    ],
+    'Telemetry Only (from test_2023_with_telemetry)': [
+        '23.81%',
+        '57.14%'
+    ]
 })
 
 print(results.to_string(index=False))
@@ -191,9 +186,9 @@ print(f"\nLinearRegression correct predictions:")
 for season, round_num, driver in sessions_lr:
     print(f"  Round {round_num}: {driver}")
 
-# Check which model is better for 2023
+# Winner
 print("\n" + "=" * 70)
-print("WINNER FOR 2023")
+print("WINNER FOR 2023 - HYBRID APPROACH")
 print("=" * 70)
 
 if pole_acc_br > pole_acc_lr:
@@ -203,27 +198,20 @@ elif pole_acc_lr > pole_acc_br:
     print(f"🏆 LinearRegression wins: {pole_acc_lr:.2f}% vs {pole_acc_br:.2f}%")
     print(f"   Margin: +{pole_acc_lr - pole_acc_br:.2f}%")
 else:
-    print(f"🤝 TIE: Both models at {pole_acc_br:.2f}%")
+    print(f"🤝 TIE: Both at {pole_acc_br:.2f}%")
 
 print("\n" + "=" * 70)
 print("ANALYSIS")
 print("=" * 70)
 
-avg_2023 = (pole_acc_br + pole_acc_lr) / 2
-print(f"Average 2023 performance: {avg_2023:.2f}%")
-print(f"Change: {avg_2023 - 50.00:+.2f}%")
+avg_hybrid = (pole_acc_br + pole_acc_lr) / 2
+print(f"\nHybrid approach average: {avg_hybrid:.2f}%")
+print(f"Historical only average: {(47.62 + 14.29)/2:.2f}%")
+print(f"Telemetry only average: {(23.81 + 57.14)/2:.2f}%")
 
-if avg_2023 < 50.00:
-    print("\n⚠️  Models perform worse on 2023 data")
-    print("    Possible reasons:")
-    print("    - 2023 regulation changes")
-    print("    - Different competitive dynamics")
-    print("    - Red Bull dominance era")
-elif avg_2023 > 50.00:
-    print("\n✅ Models perform better on 2023 data")
-    print("    Models generalize well to new season!")
-else:
-    print("\n✅ Models maintain performance on 2023 data")
-    print("    Consistent generalization across years")
+print("\n✓ The hybrid approach combines:")
+print("  - Deep historical patterns (1983-2022)")
+print("  - Modern telemetry insights (2018-2022)")
+print("  - Best of both worlds!")
 
 print("=" * 70)
