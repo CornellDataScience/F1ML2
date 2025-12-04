@@ -11,4 +11,5 @@ dist/
 build/
 
 *.ff1pkl
+*.pkl
 

@@ -63,12 +63,19 @@ def get_fastf1_driver_code(driver_name: str) -> str:
     Get FastF1 3-letter driver code from dataset driver name.
     
     Args:
-        driver_name: Driver name from dataset (e.g., 'hamilton', 'verstappen')
+        driver_name: Driver name from dataset (e.g., 'hamilton', 'verstappen', 'alo', 'VER')
     
     Returns:
         FastF1 3-letter code (e.g., 'HAM', 'VER') or None if not found
     """
-    driver_lower = str(driver_name).lower().strip()
+    driver_str = str(driver_name).strip()
+    
+    # If already a 3-letter code (upper or lower), convert to uppercase and return
+    if len(driver_str) == 3 and driver_str.isalpha():
+        return driver_str.upper()
+    
+    # Otherwise look up in mapping
+    driver_lower = driver_str.lower()
     return DRIVER_NAME_TO_CODE.get(driver_lower)
 
 

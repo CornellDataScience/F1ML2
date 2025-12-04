@@ -37,9 +37,10 @@ y = df['grid']
 X = df.drop(columns=['grid', 'driver', 'season', 'round'], errors='ignore')
 
 # IMPORTANT: Drop qualifying_secs to prevent data leakage
-if 'qualifying_secs' in X.columns:
-    print(f"  🔬 DROPPING 'qualifying_secs' to prevent data leakage")
-    X = X.drop(columns=['qualifying_secs'])
+# TEMPORARILY COMMENTED OUT TO TEST DATA LEAKAGE THEORY
+# if 'qualifying_secs' in X.columns:
+#     print(f"  🔬 DROPPING 'qualifying_secs' to prevent data leakage")
+#     X = X.drop(columns=['qualifying_secs'])
 
 # Drop any remaining object/string columns
 object_cols = X.select_dtypes(include=['object']).columns

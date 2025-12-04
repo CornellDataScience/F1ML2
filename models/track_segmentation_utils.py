@@ -61,72 +61,55 @@ def load_raceline_csv(raw_url: str) -> pd.DataFrame:
 
 def load_raceline_geojson(raw_url: str) -> pd.DataFrame:
     """
-    Load raceline GeoJSON and return float columns x_m, y_m.
-    Extracts coordinates from GeoJSON LineString geometry.
+    Load raceline from GeoJSON FeatureCollection and return DataFrame with x_m, y_m columns.
+    
+    Converts lat/lon to local Cartesian coordinates (meters) using tangent plane projection.
     """
     r = requests.get(raw_url, timeout=30)
     r.raise_for_status()
     
     geojson_data = json.loads(r.text)
     
-    # Extract coordinates from GeoJSON structure
-    # GeoJSON can be FeatureCollection or single Feature
-    if geojson_data.get('type') == 'FeatureCollection':
-        features = geojson_data.get('features', [])
-        if not features:
-            raise ValueError("No features found in GeoJSON")
-        # Take first feature (usually the track)
-        geometry = features[0].get('geometry', {})
-    elif geojson_data.get('type') == 'Feature':
-        geometry = geojson_data.get('geometry', {})
-    else:
-        # Might be just geometry
-        geometry = geojson_data
+    # Extract coordinates from GeoJSON FeatureCollection
+    # Assuming standard format: FeatureCollection -> features[0] -> geometry (LineString)
+    if geojson_data.get('type') != 'FeatureCollection':
+        raise ValueError(f"Expected FeatureCollection, got {geojson_data.get('type')}")
     
-    # Extract coordinates from LineString or MultiLineString
-    coords = []
-    if geometry.get('type') == 'LineString':
-        coords = geometry.get('coordinates', [])
-    elif geometry.get('type') == 'MultiLineString':
-        # Flatten all line segments
-        for line in geometry.get('coordinates', []):
-            coords.extend(line)
-    else:
-        raise ValueError(f"Unsupported geometry type: {geometry.get('type')}")
+    features = geojson_data.get('features', [])
+    if not features:
+        raise ValueError("No features found in GeoJSON")
     
+    geometry = features[0].get('geometry', {})
+    if geometry.get('type') != 'LineString':
+        raise ValueError(f"Expected LineString geometry, got {geometry.get('type')}")
+    
+    coords = geometry.get('coordinates', [])
     if not coords:
         raise ValueError("No coordinates found in GeoJSON")
     
     # Convert to DataFrame
-    # GeoJSON coordinates are [lon, lat]
+    # GeoJSON coordinates are [lon, lat] in WGS84 (degrees)
     df = pd.DataFrame(coords, columns=['lon', 'lat'])
     
-    # If coordinates look like lat/lon (small values), convert to meters using Web Mercator-like projection
-    # This is a heuristic: if values are between -180 and 180, assume lat/lon
-    if df['lon'].abs().max() < 200 and df['lat'].abs().max() < 200:
-        # Use a local tangent plane projection centered on the track
-        # This is more accurate than simple degree multiplication
-        center_lon = df['lon'].mean()
-        center_lat = df['lat'].mean()
-        
-        # Convert to radians
-        lon_rad = np.radians(df['lon'].values)
-        lat_rad = np.radians(df['lat'].values)
-        center_lon_rad = np.radians(center_lon)
-        center_lat_rad = np.radians(center_lat)
-        
-        # Earth radius in meters
-        R = 6371000
-        
-        # Project to local Cartesian coordinates (meters)
-        # x = R * cos(center_lat) * (lon - center_lon)
-        # y = R * (lat - center_lat)
-        df['x_m'] = R * np.cos(center_lat_rad) * (lon_rad - center_lon_rad)
-        df['y_m'] = R * (lat_rad - center_lat_rad)
-    else:
-        # Already in meters or other Cartesian system
-        df['x_m'] = df['lon']
-        df['y_m'] = df['lat']
+    # Convert lat/lon (WGS84 degrees) to local Cartesian coordinates (meters)
+    # Using local tangent plane projection centered on the track
+    center_lon = df['lon'].mean()
+    center_lat = df['lat'].mean()
+    
+    # Convert to radians
+    lon_rad = np.radians(df['lon'].values)
+    lat_rad = np.radians(df['lat'].values)
+    center_lon_rad = np.radians(center_lon)
+    center_lat_rad = np.radians(center_lat)
+    
+    # Earth radius in meters
+    R = 6371000
+    
+    # Project to local Cartesian coordinates (meters)
+    # x = R * cos(center_lat) * (lon - center_lon)
+    # y = R * (lat - center_lat)
+    df['x_m'] = R * np.cos(center_lat_rad) * (lon_rad - center_lon_rad)
+    df['y_m'] = R * (lat_rad - center_lat_rad)
     
     # Keep only x_m and y_m columns
     df = df[['x_m', 'y_m']].copy()
