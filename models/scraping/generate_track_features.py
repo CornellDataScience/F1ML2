@@ -68,7 +68,10 @@ def generate_all_track_features(output_path: str = None):
             
             segments = generate_track_segments(
                 track_name=circuit_id,
-                raceline_url=raceline_url
+                raceline_url=raceline_url,
+                thr_quantile=0.70,  # Lower threshold for GeoJSON tracks (detect top 30% curvature as corners)
+                min_corner_length=8.0,  # Slightly smaller min length
+                merge_distance=15.0  # Smaller merge distance
             )
             
             features = extract_track_features(circuit_id, segments)

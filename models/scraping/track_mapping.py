@@ -83,77 +83,77 @@ CIRCUIT_TO_FASTF1 = {
     'zolder': None,
 }
 
-# Mapping from circuit_id to TUM FTM Raceline URL
-# Source: https://github.com/TUMFTM/racetrack-database
+# Mapping from circuit_id to  eoJSON URL
+# Source: https://github.com/bacinger/f1-circuits
 CIRCUIT_TO_RACELINE_URL = {
-    # Circuits with confirmed raceline data in TUM database (25 total)
-    'bahrain': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Sakhir.csv',
-    'sakhir': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Sakhir.csv',
-    'melbourne': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Melbourne.csv',
-    'albert_park': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Melbourne.csv',
-    'shanghai': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Shanghai.csv',
-    'barcelona': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Catalunya.csv',
-    'catalunya': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Catalunya.csv',
-    'montreal': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Montreal.csv',
-    'montréal': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Montreal.csv',
-    'villeneuve': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Montreal.csv',
-    'silverstone': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Silverstone.csv',
-    'hockenheimring': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Hockenheim.csv',
-    'hungaroring': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Budapest.csv',
-    'budapest': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Budapest.csv',
-    'spa': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Spa.csv',
-    'spa_francorchamps': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Spa.csv',
-    'monza': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Monza.csv',
-    'suzuka': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Suzuka.csv',
-    'sochi': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Sochi.csv',
-    'austin': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Austin.csv',
-    'americas': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Austin.csv',
-    'mexico_city': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/MexicoCity.csv',
-    'rodriguez': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/MexicoCity.csv',
-    'interlagos': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/SaoPaulo.csv',
-    'são_paulo': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/SaoPaulo.csv',
-    'yas_marina': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/YasMarina.csv',
-    'red_bull_ring': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Spielberg.csv',
-    'spielberg': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Spielberg.csv',
-    'sepang': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Sepang.csv',
-    'zandvoort': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Zandvoort.csv',
-    'nurburgring': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/Nuerburgring.csv',
-    'brands_hatch': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/BrandsHatch.csv',
-    'indianapolis': 'https://raw.githubusercontent.com/TUMFTM/racetrack-database/master/racelines/IMS.csv',
+    # Modern F1 circuits (active)
+    'bahrain': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/bh-2002.geojson',
+    'sakhir': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/bh-2002.geojson',
+    'jeddah': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/sa-2021.geojson',
+    'melbourne': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/au-1953.geojson',
+    'albert_park': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/au-1953.geojson',
+    'baku': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/az-2016.geojson',
+    'miami': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/us-2022.geojson',
+    'monaco': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/mc-1929.geojson',
+    'barcelona': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/es-1991.geojson',
+    'catalunya': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/es-1991.geojson',
+    'montreal': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/ca-1978.geojson',
+    'montréal': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/ca-1978.geojson',
+    'villeneuve': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/ca-1978.geojson',
+    'spielberg': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/at-1969.geojson',
+    'red_bull_ring': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/at-1969.geojson',
+    'silverstone': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/gb-1948.geojson',
+    'hungaroring': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/hu-1986.geojson',
+    'budapest': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/hu-1986.geojson',
+    'spa': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/be-1925.geojson',
+    'spa_francorchamps': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/be-1925.geojson',
+    'zandvoort': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/nl-1948.geojson',
+    'monza': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/it-1922.geojson',
+    'marina_bay': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/sg-2008.geojson',
+    'suzuka': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/jp-1962.geojson',
+    'losail': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/qa-2004.geojson',
+    'lusail': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/qa-2004.geojson',
+    'austin': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/us-2012.geojson',
+    'americas': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/us-2012.geojson',
+    'mexico_city': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/mx-1962.geojson',
+    'rodriguez': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/mx-1962.geojson',
+    'interlagos': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/br-1940.geojson',
+    'são_paulo': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/br-1940.geojson',
+    'las_vegas': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/us-2023.geojson',
+    'yas_marina': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/ae-2009.geojson',
     
-    # Modern circuits without raceline data in TUM database
-    'monaco': None,  # Not available
-    'imola': None,  # Not available
-    'miami': None,  # Not available
-    'baku': None,  # Not available
-    'marina_bay': None,  # Singapore - Not available
-    'portimao': None,  # Not available
-    'istanbul': None,  # Not available
-    'jeddah': None,  # Not available
-    'losail': None,  # Qatar - Not available
-    'lusail': None,  # Qatar (alternative spelling) - Not available
-    'las_vegas': None,  # Not available
+    # Recently retired circuits
+    'portimao': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/pt-2008.geojson',
+    'istanbul': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/tr-2005.geojson',
+    'sochi': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/ru-2014.geojson',
+    'nurburgring': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/de-1927.geojson',
+    'hockenheimring': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/de-1932.geojson',
+    'sepang': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/my-1999.geojson',
+    'shanghai': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/cn-2004.geojson',
     
-    # Historic circuits without raceline data
-    'ricard': None,
-    'magny_cours': None,
+    # Historic circuits
+    'imola': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/it-1953.geojson',
+    'mugello': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/it-1914.geojson',
+    'ricard': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/fr-1969.geojson',
+    'magny_cours': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/fr-1960.geojson',
+    'estoril': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/pt-1972.geojson',
+    'jacarepagua': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/br-1977.geojson',
+    'kyalami': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/za-1961.geojson',
+    'indianapolis': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/us-1909.geojson',
+    'galvez': 'https://raw.githubusercontent.com/bacinger/f1-circuits/refs/heads/master/circuits/ar-1952.geojson',
+    
+    # Circuits not in bacinger repository
+    'brands_hatch': None,
     'yeongam': None,
     'buddh': None,
     'valencia': None,
-    'mugello': None,
-    
-    # Very old circuits - no racelines available
     'adelaide': None,
     'dallas': None,
     'detroit': None,
     'dijon': None,
     'donington': None,
-    'estoril': None,
     'fuji': None,
-    'galvez': None,
-    'jacarepagua': None,
     'jerez': None,
-    'kyalami': None,
     'long_beach': None,
     'okayama': None,
     'phoenix': None,
@@ -176,13 +176,13 @@ def get_fastf1_event_name(circuit_id: str) -> str:
 
 def get_raceline_url(circuit_id: str) -> str:
     """
-    Get TUM FTM raceline URL for a circuit_id.
+    Get bacinger GeoJSON raceline URL for a circuit_id.
     
     Args:
         circuit_id: Circuit identifier from dataset (e.g., 'monaco', 'bahrain')
     
     Returns:
-        URL to raceline CSV or None if not available
+        URL to raceline GeoJSON or None if not available
     """
     return CIRCUIT_TO_RACELINE_URL.get(circuit_id.lower())
 
