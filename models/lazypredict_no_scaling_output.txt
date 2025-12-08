@@ -1,0 +1,135 @@
+======================================================================
+LAZYPREDICT (NO SCALING) - TESTING ALL MODELS
+======================================================================
+
+Loading qualifying dataset...
+Dataset loaded: 15769 records
+
+Preparing features...
+  🔬 DROPPING 'qualifying_secs'
+  Dropping 4 non-numeric columns
+  Converting 129 boolean columns to int
+Feature matrix shape: (15769, 154)
+
+DATA SPLIT: Training on <2022, Testing on 2022
+Training set: 15333 records
+Test set: 436 records
+
+Handling missing values (NO SCALING)...
+
+======================================================================
+RUNNING LAZYPREDICT WITHOUT SCALING...
+======================================================================
+Training ~40 models (this may take a few minutes)...
+
+  0%|          | 0/42 [00:00<?, ?it/s]  2%|▏         | 1/42 [00:00<00:33,  1.23it/s]  5%|▍         | 2/42 [00:02<00:45,  1.13s/it]  7%|▋         | 3/42 [00:02<00:25,  1.50it/s] 10%|▉         | 4/42 [00:02<00:20,  1.89it/s] 14%|█▍        | 6/42 [00:02<00:10,  3.43it/s] 17%|█▋        | 7/42 [00:03<00:14,  2.40it/s] 19%|█▉        | 8/42 [00:03<00:12,  2.78it/s] 21%|██▏       | 9/42 [00:13<01:38,  2.98s/it] 26%|██▌       | 11/42 [00:44<04:28,  8.66s/it] 29%|██▊       | 12/42 [00:47<03:39,  7.33s/it] 31%|███       | 13/42 [00:48<02:43,  5.65s/it] 33%|███▎      | 14/42 [00:48<01:59,  4.27s/it] 36%|███▌      | 15/42 [00:49<01:24,  3.13s/it] 38%|███▊      | 16/42 [00:57<02:01,  4.69s/it] 40%|████      | 17/42 [00:57<01:24,  3.37s/it] 43%|████▎     | 18/42 [00:58<00:59,  2.47s/it] 45%|████▌     | 19/42 [00:58<00:41,  1.79s/it] 48%|████▊     | 20/42 [00:59<00:32,  1.47s/it] 52%|█████▏    | 22/42 [00:59<00:17,  1.14it/s] 55%|█████▍    | 23/42 [00:59<00:13,  1.43it/s] 57%|█████▋    | 24/42 [00:59<00:09,  1.82it/s] 60%|█████▉    | 25/42 [01:02<00:21,  1.28s/it] 62%|██████▏   | 26/42 [01:24<01:51,  6.97s/it] 64%|██████▍   | 27/42 [01:39<02:16,  9.13s/it] 69%|██████▉   | 29/42 [01:39<01:06,  5.08s/it] 71%|███████▏  | 30/42 [01:39<00:46,  3.87s/it] 76%|███████▌  | 32/42 [01:43<00:31,  3.19s/it] 79%|███████▊  | 33/42 [01:44<00:23,  2.65s/it] 81%|████████  | 34/42 [01:57<00:41,  5.16s/it] 86%|████████▌ | 36/42 [01:57<00:18,  3.09s/it] 88%|████████▊ | 37/42 [01:57<00:12,  2.41s/it] 90%|█████████ | 38/42 [02:10<00:20,  5.01s/it] 95%|█████████▌| 40/42 [02:11<00:05,  2.98s/it] 98%|█████████▊| 41/42 [02:11<00:02,  2.39s/it]100%|██████████| 42/42 [02:11<00:00,  1.86s/it]100%|██████████| 42/42 [02:11<00:00,  3.14s/it]
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.001872 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 3064
+[LightGBM] [Info] Number of data points in the train set: 15333, number of used features: 145
+[LightGBM] [Info] Start training from score 11.843605
+
+======================================================================
+RESULTS - TOP 20 MODELS (NO SCALING)
+======================================================================
+
+Sorted by R-Squared:
+
+                               Adjusted R-Squared  R-Squared  RMSE  Time Taken
+Model                                                                         
+BayesianRidge                                0.18       0.47  4.16        0.11
+LGBMRegressor                                0.18       0.47  4.16        0.24
+LassoLarsIC                                  0.18       0.47  4.16        0.15
+ElasticNetCV                                 0.18       0.47  4.16        0.75
+RidgeCV                                      0.18       0.47  4.17        0.18
+Ridge                                        0.18       0.47  4.17        0.06
+PoissonRegressor                             0.17       0.47  4.18        0.08
+LassoLarsCV                                  0.17       0.47  4.18        0.25
+LassoCV                                      0.17       0.47  4.18        0.72
+LarsCV                                       0.17       0.47  4.18        0.32
+GradientBoostingRegressor                    0.17       0.47  4.18        3.19
+OrthogonalMatchingPursuit                    0.17       0.46  4.19        0.04
+OrthogonalMatchingPursuitCV                  0.17       0.46  4.19        0.17
+HistGradientBoostingRegressor                0.17       0.46  4.20        0.82
+TweedieRegressor                             0.16       0.46  4.20        0.07
+ElasticNet                                   0.16       0.46  4.21        0.13
+ExtraTreesRegressor                          0.16       0.46  4.22        9.49
+HuberRegressor                               0.15       0.45  4.23        0.54
+RandomForestRegressor                        0.15       0.45  4.25       12.91
+LassoLars                                    0.14       0.45  4.26        0.09
+
+Full results saved to: lazypredict_no_scaling_results.csv
+
+======================================================================
+TOP 5 MODELS (NO SCALING)
+======================================================================
+
+1. BayesianRidge
+   R-Squared: 0.4712
+   RMSE: 4.1596
+   Time: 0.11s
+
+2. LGBMRegressor
+   R-Squared: 0.4704
+   RMSE: 4.1627
+   Time: 0.24s
+
+3. LassoLarsIC
+   R-Squared: 0.4701
+   RMSE: 4.1638
+   Time: 0.15s
+
+4. ElasticNetCV
+   R-Squared: 0.4700
+   RMSE: 4.1641
+   Time: 0.75s
+
+5. RidgeCV
+   R-Squared: 0.4693
+   RMSE: 4.1669
+   Time: 0.18s
+
+======================================================================
+KEY MODELS COMPARISON
+======================================================================
+
+BayesianRidge:
+  Rank: 1/41
+  R²: 0.4712
+  RMSE: 4.1596
+
+LinearRegression:
+  Rank: 39/41
+  R²: -42408417529616830300160.0000
+  RMSE: 1177956222769.3284
+
+Ridge:
+  Rank: 6/41
+  R²: 0.4693
+  RMSE: 4.1672
+
+Lasso:
+  Rank: 21/41
+  R²: 0.4457
+  RMSE: 4.2588
+
+======================================================================
+POLE POSITION ACCURACY FOR ALL MODELS
+======================================================================
+Calculating pole accuracy for all models (this may take a moment)...
+
+Traceback (most recent call last):
+  File "/Users/sz/Programming/CDS/f1_ml/test/models/lazypredict_no_scaling.py", line 120, in <module>
+    test_df['prediction'] = predictions[model_name].values
+    ~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/pandas/core/frame.py", line 4311, in __setitem__
+    self._set_item(key, value)
+  File "/opt/anaconda3/lib/python3.12/site-packages/pandas/core/frame.py", line 4524, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/pandas/core/frame.py", line 5266, in _sanitize_column
+    com.require_length_match(value, self.index)
+  File "/opt/anaconda3/lib/python3.12/site-packages/pandas/core/common.py", line 573, in require_length_match
+    raise ValueError(
+ValueError: Length of values (41) does not match length of index (436)

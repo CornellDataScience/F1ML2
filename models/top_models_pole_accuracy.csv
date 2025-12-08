@@ -1,0 +1,8 @@
+Model,Pole_Accuracy,Correct_Poles,Total_Sessions
+BayesianRidge,50.0,11,22
+Ridge,45.45454545454545,10,22
+LGBMRegressor,40.909090909090914,9,22
+GradientBoostingRegressor,40.909090909090914,9,22
+ElasticNet,40.909090909090914,9,22
+RandomForestRegressor,36.36363636363637,8,22
+Lasso,36.36363636363637,8,22
